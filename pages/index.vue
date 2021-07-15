@@ -19,8 +19,7 @@
 
       <p class="mb-5">Capitulo: {{ listaArtigos.chapter.number }}</p>
       <p class="mb-5">Versiculos: {{ listaArtigos.chapter.verses }}</p>
-      <p class="mb-5">Texto:{{ listaArtigos.verses.text }}</p>
-     
+      <p class="mb-5">Texto:{{ listaArtigos.verses[0].number }}. {{ listaArtigos.verses[0].text }}</p>
     </article>
   </div>
 </template>
@@ -33,15 +32,11 @@ export default {
       tituloBlog: "Biblia Online",
     }
   },
-  created() {
-    this.fetch();
-  },
-  methods: {
-    async fetch() {
+ 
+  async fetch() {
       this.listaArtigos = await fetch(
-        "https://www.abibliadigital.com.br/api/verses/nvi/rm/9"
+        "https://www.abibliadigital.com.br/api/verses/nvi/sl/9"
       ).then((res) => res.json());
     },
-  },
 };
 </script>
