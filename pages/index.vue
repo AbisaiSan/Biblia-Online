@@ -5,33 +5,33 @@
     <article class="my-20">
       <h2>Informações do livro</h2>
       <h4 class="text-5xl font-semibold mb-5">
-        Livro: {{ listaArtigos.book }}
+        Livro: {{ listaArtigos.book.name }}
       </h4>
       <h4 class="text-5xl font-semibold mb-5">
-        Autor: {{ listaArtigos.author }}
+        Autor: {{ listaArtigos.book.author }}
       </h4>
       <h4 class="text-5xl font-semibold mb-5">
-        Gênero Literario: {{ listaArtigos.group }}
+        Gênero Literario: {{ listaArtigos.book.group }}
       </h4>
       <h4 class="text-5xl font-semibold mb-5">
-        Versão: {{ listaArtigos.version }}
+        Versão: {{ listaArtigos.book.version }}
       </h4>
 
-      <p class="mb-5">Capitulo: {{ listaArtigos.chapter }}</p>
-      <p class="mb-5">Capitulo: {{ listaArtigos.chapter }}</p>
-      <p class="mb-5">Texto:{{ listaArtigos.verses }}</p>
-      <p class="text-red-500">Leia mais...</p>
+      <p class="mb-5">Capitulo: {{ listaArtigos.chapter.number }}</p>
+      <p class="mb-5">Versiculos: {{ listaArtigos.chapter.verses }}</p>
+      <p class="mb-5">Texto:{{ listaArtigos.verses.text }}</p>
+     
     </article>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data: () => {
     return {
       listaArtigos: [],
       tituloBlog: "Biblia Online",
-    };
+    }
   },
   created() {
     this.fetch();
@@ -39,7 +39,7 @@ export default {
   methods: {
     async fetch() {
       this.listaArtigos = await fetch(
-        "https://www.abibliadigital.com.br/api/verses/nvi/rm/8"
+        "https://www.abibliadigital.com.br/api/verses/nvi/rm/9"
       ).then((res) => res.json());
     },
   },
